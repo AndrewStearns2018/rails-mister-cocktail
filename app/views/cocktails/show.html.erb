@@ -1,8 +1,6 @@
-<h1>Cocktail#show</h1>
-<p>Find me in app/views/cocktail/show.html.erb</p>
 
 <%= @cocktail.name %>
-<ul>
+<ul class="list-unstyled">
   <% @cocktail.doses.each do |dose| %>
     <li><%= dose.description %></li>
     <li><%= dose.ingredient.name %></li>
@@ -18,15 +16,23 @@
 
 <p>Add a dose to this cocktail</p>
 
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-  <!--Needs [] when you have 2 arguements-->
-  <%= f.input :description %>
-  <%= f.association :ingredient %>
-  <!-- association allows for a drop down list-->
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <!--Needs [] when you have 2 arguements-->
+      <div class="col-md-6 col-md-offset-3">
+        <%= f.input :description %>
+        <%= f.association :ingredient %>
+        <!-- association allows for a drop down list-->
+        <%= f.submit %>
+      </div>
+    <% end %>
+    <br>
+    <div class="col-md-6 col-md-offset-3">
+      <%= link_to "Back to list", cocktails_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
 
 
-
-<%= link_to "Back to list", cocktails_path %>
 
