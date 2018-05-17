@@ -7,9 +7,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  </head>
   <body>
-    <%= yield %>
+    <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://lobservateur.info/wp-content/uploads/2018/03/Champagne-Glasses-aetb_Thinkstock.jpg');">
+      <div class="banner-content">
+        <h1>Mister Cocktail</h1>
+        <p>Time to booze it up</p>
+      </div>
+    </div>
+    <div><%= yield %></div>
+
   </body>
 </html>

@@ -1,10 +1,10 @@
-<h1>Cocktail#index</h1>
-<p>Find me in app/views/cocktail/index.html.erb</p>
+<div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 50px;">
+  <h1>Here are our drinks</h1>
+  <ul class="list-unstyled">
+    <% @cocktails.each do |cocktail| %>
+      <li><%= link_to cocktail.name, cocktail_path(cocktail), style: "text-decoraction: none;"%></li>
+    <% end %>
+  </ul>
 
-<ul>
-  <% @cocktails.each do |cocktail| %>
-    <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
-  <% end %>
-</ul>
-
-<%= link_to "Create a new cocktail", new_cocktail_path %>
+  <%= link_to "Create a new cocktail", new_cocktail_path, class: "btn btn-primary" %>
+</div>
