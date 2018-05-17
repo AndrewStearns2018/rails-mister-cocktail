@@ -1,3 +1,26 @@
 <h1>Cocktail#show</h1>
 <p>Find me in app/views/cocktail/show.html.erb</p>
 
+<%= @cocktail.name %>
+<ul>
+  <% @cocktail.doses.each do |dose| %>
+    <li><%= dose.description %></li>
+    <li><%= dose.ingredient %></li>
+  <% end %>
+</ul>
+
+<br>
+
+<p>Add a dose to this cocktail</p>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <!--Needs [] when you have 2 arguements-->
+  <%= f.input :description %>
+  <%= f.association :ingredient %>
+  <%= f.submit %>
+<% end %>
+
+
+
+<%= link_to "Back to list", cocktails_path %>
+
