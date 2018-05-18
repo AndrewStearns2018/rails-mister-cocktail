@@ -1,10 +1,13 @@
-<h1>Cocktail#new</h1>
-<p>Find me in app/views/cocktail/new.html.erb</p>
+<div class="conainter" style="display: flex; padding: 50px; flex-direction: column; justify-content: center; align-items: center;">
+  <div><h1>Make your new cocktail here</h1></div>
+  <br>
+  <div class="shadow p-3 mb-5 bg-white rounded">
+  <%= simple_form_for(@cocktail) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit "Create a cocktail", class: 'btn btn-primary' %>
 
-<%= simple_form_for(@cocktail) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit "Create a cocktail" %>
-
-<% end %>
+  <% end %>
+  </div>
+</div>
