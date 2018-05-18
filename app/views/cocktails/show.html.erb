@@ -12,11 +12,12 @@
   <% end %>
 </ul>
 
+    <%= cl_image_tag @cocktail.photo, :width=>300, :height=>300, :gravity=>"face", :radius=>"max", :crop=>"fill",
+    :background=>"#F4F4F4" %>
+
 <br>
-
-<p>Add a dose to this cocktail</p>
-
 <div class="container">
+  <h2 class="text-center">Add a dose to this cocktail</h2>
   <div class="row">
     <%= simple_form_for [@cocktail, @dose] do |f| %>
       <!--Needs [] when you have 2 arguements-->
@@ -28,7 +29,6 @@
       </div>
     <% end %>
     <br>
-    <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
     <div class="col-md-6 col-md-offset-3">
       <%= link_to "Back to list", cocktails_path, class: "btn btn-primary" %>
     </div>
