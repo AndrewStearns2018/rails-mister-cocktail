@@ -5,7 +5,7 @@
     <% @cocktail.doses.each do |dose| %>
       <p><strong>Add:</strong></p>
       <li><em> <%=  dose.description%> of <%=dose.ingredient.name %></em></li>
-      <li>Shake and serve<%= image_tag 'cocktail-shaker', style: "height: 35px;" %></li>
+  <li>Shake and serve<%= image_tag 'cocktail-shaker', style: "height: 50px;" %></li>
       <br>
   </ul>
       <span><i class="fas fa-trash-alt"></i><%= link_to cocktail_dose_path(@cocktail, dose),
@@ -18,7 +18,7 @@
 
 
 <br>
-<div class="container">
+<div class="container" style="position: absolute; right: 0; top: 400px;">
   <h3 class="text-center">Add a dose to this cocktail</h3>
   <div class="row">
     <%= simple_form_for [@cocktail, @dose] do |f| %>
@@ -27,7 +27,7 @@
         <%= f.input :description %>
         <%= f.association :ingredient %>
         <!-- association allows for a drop down list-->
-        <%= f.submit %>
+        <%= f.button :submit %>
       </div>
     <% end %>
     <br>
