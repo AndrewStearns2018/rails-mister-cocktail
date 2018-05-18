@@ -22,9 +22,14 @@ class CocktailsController < ApplicationController
     end
   end
 
+  def home
+    @cocktails = index
+  end
+
   private
 
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :photo)
+    # One must white list the possibility of a photo.
   end
 end

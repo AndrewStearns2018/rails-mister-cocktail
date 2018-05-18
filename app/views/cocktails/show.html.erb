@@ -28,6 +28,7 @@
       </div>
     <% end %>
     <br>
+    <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
     <div class="col-md-6 col-md-offset-3">
       <%= link_to "Back to list", cocktails_path, class: "btn btn-primary" %>
     </div>
