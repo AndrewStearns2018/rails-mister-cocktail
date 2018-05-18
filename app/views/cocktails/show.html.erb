@@ -1,24 +1,30 @@
-<div class="container">
+<div class="container" style="width: calc(100vw - 200px);">
   <div class="row">
-    <div class="col-md-4">
-      <h1><%= @cocktail.name%></h1>
+    <div class="col-md-3">
+      <h3 class="text-center"><%= @cocktail.name%></h3>
       <%= cl_image_tag @cocktail.photo, :width=>300, :height=>300, :gravity=>"face", :radius=>"max", :crop=>"fill", :background=>"#F4F4F4" %>
       <ul class="list-unstyled">
-        <% @cocktail.doses.each do |dose| %>
-          <p><strong>Add:</strong></p>
-          <li><em> <%=  dose.description%> of <%=dose.ingredient.name %></em></li>
-          <br>
-          <li>Shake and serve<%= image_tag 'cocktail-shaker', style: "height: 30px;" %></li>
-          <br>
-      </ul>
-          <span><i class="fas fa-trash-alt"></i><%= link_to cocktail_dose_path(@cocktail, dose),
-                  method: :delete,
-                  data: { confirm: "Are you sure you want to delete this?" } do  %>
-                  <%= "Delete this dose" %>
-          <% end %></span>
-        <% end %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-3 col-md-offset-1">
+        <% @cocktail.doses.each do |dose| %>
+          <p style="margin-top: 32px;"><strong>Add:</strong></p>
+          <ul class="list-unstyled">
+            <li><em> <%=  dose.description%> of <%=dose.ingredient.name %></em></li>
+            <br>
+            <li>Shake and serve<%= image_tag 'cocktail-shaker', style: "height: 30px;" %></li>
+            <br>
+            <span><i class="fas fa-trash-alt"></i><%= link_to cocktail_dose_path(@cocktail, dose),
+                    method: :delete,
+                    data: { confirm: "Are you sure you want to delete this?" } do  %>
+                    <%= "Delete this dose" %>
+          <% end %></span>
+          <br>
+          <br>
+          <%= link_to "Back to list", cocktails_path, class: "btn btn-primary" %>
+        <% end %>
+        </ul>
+     </div>
+    <div class="col-md-4 col-md-offset-1">
       <h3 class="text-center">Add a dose to this cocktail</h3>
       <div class="row">
         <%= simple_form_for [@cocktail, @dose] do |f| %>
@@ -27,13 +33,10 @@
             <%= f.input :description %>
             <%= f.association :ingredient %>
             <!-- association allows for a drop down list-->
-            <%= f.button :submit, class: "btn btn-primary" %>
+            <%= f.button :submit, class: "btn btn-primary form-control" %>
           </div>
         <% end %>
         <br>
-        <div class="">
-          <%= link_to "Back to list", cocktails_path, class: "btn btn-primary" %>
-        </div>
       </div>
     </div>
   </div>
